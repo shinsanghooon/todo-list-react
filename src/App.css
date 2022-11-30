@@ -1,0 +1,10 @@
+.main {
+	width: 250px;
+	padding: 5px;
+}
+
+.todolist {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+}
