@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export default function Todo({ todo }) {
+export default function Todo({ todo, handleDelete }) {
 	const [checked, setChecked] = useState(false);
 
 	const handleCheck = (e) => {
@@ -20,7 +20,7 @@ export default function Todo({ todo }) {
 				<input type='checkbox' onClick={handleCheck} />
 				<span style={checked ? todoStyle : {}}>{todo}</span>
 			</div>
-			<button>
+			<button onClick={() => handleDelete(todo)}>
 				<FaTrash />
 			</button>
 		</div>

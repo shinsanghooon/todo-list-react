@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Footer from './components/footer';
 import Header from './components/header';
-import Todos from './components/todos';
+import Todo from './components/todo';
 
 function App() {
 	const [task, setTask] = useState('');
@@ -19,10 +19,17 @@ function App() {
 		setTask(e.target.value);
 	};
 
+	const handleDelete = (name) => {
+		const filteredTodos = todos.filter((todo) => todo !== name);
+		setTodos(filteredTodos);
+	};
+
 	return (
 		<div className='main'>
 			<Header />
-			<Todos todos={todos} />
+			{todos.map((todo, index) => (
+				<Todo todo={todo} key={index} handleDelete={handleDelete} />
+			))}
 			<form onSubmit={handleSubmit}>
 				<label htmlFor='name'></label>
 				<input
@@ -32,7 +39,7 @@ function App() {
 					value={task}
 					onChange={handleChange}
 				/>
-				<button>Submit!</button>
+				<button>작성</button>
 			</form>
 			<Footer />
 		</div>
