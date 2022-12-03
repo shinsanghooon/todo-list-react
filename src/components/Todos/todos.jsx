@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Todo from './todo';
+import Todo from '../Todo/todo';
 import { v4 as uuidv4 } from 'uuid';
+import styles from './Todos.module.css';
 
 export default function Todos({ filter }) {
 	const [todos, setTodos] = useState([]);
@@ -33,25 +34,30 @@ export default function Todos({ filter }) {
 
 	return (
 		<>
-			{filteredTodos.map((todo) => (
-				<Todo
-					todo={todo}
-					key={todo.id}
-					onCheck={handleCheck}
-					onDelete={handleDelete}
-				/>
-			))}
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'></label>
-				<input
-					type='text'
-					id='name'
-					name='name'
-					value={task}
-					onChange={handleChange}
-				/>
-				<button>add</button>
-			</form>
+			<section className={styles.container}>
+				<ul className={styles.list}>
+					{filteredTodos.map((todo) => (
+						<Todo
+							todo={todo}
+							key={todo.id}
+							onCheck={handleCheck}
+							onDelete={handleDelete}
+						/>
+					))}
+				</ul>
+				<form className={styles.form} onSubmit={handleSubmit}>
+					<label htmlFor='name'></label>
+					<input
+						className={styles.input}
+						type='text'
+						id='name'
+						name='name'
+						value={task}
+						onChange={handleChange}
+					/>
+					<button className={styles.button}>add</button>
+				</form>
+			</section>
 		</>
 	);
 }

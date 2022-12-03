@@ -4,7 +4,8 @@
 - [x] 아이템 추가하기
 - [x] 아이템 삭제하기
 - [x] 아이템 완료하기 - 체크박스
-- [ ] 아이템 필터링 (All, Active, Completed)
+- [x] 아이템 필터링 (All, Active, Completed)
+- [x] PostCSS 적용
 - [ ] 다크모드
 - [ ] LocalStorage에 저장
 - [ ] 리액트 테스트 코드 작성
