@@ -8,3 +8,13 @@
 	justify-content: space-between;
 	padding: 5px;
 }
+
+.category {
+	display: flex;
+	width: 100px;
+	justify-content: center;
+	cursor: pointer;
+	padding: 10px;
+	color: rebeccapurple;
+	font-weight: 700;
+}
