@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Todo from '../Todo/todo';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Todos.module.css';
 
 export default function Todos({ filter }) {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(readTodosFromLocalStorage());
 	const [task, setTask] = useState('');
 
 	const filteredTodos = getFilteredItem(todos, filter);
@@ -31,6 +31,10 @@ export default function Todos({ filter }) {
 		console.log(deletedTodo);
 		setTodos(todos.filter((todo) => todo.id !== deletedTodo.id));
 	};
+
+	useEffect(() => {
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}, [todos]);
 
 	return (
 		<>
@@ -67,4 +71,10 @@ function getFilteredItem(todos, filter) {
 		return todos;
 	}
 	return todos.filter((todo) => todo.status === filter);
+}
+
+function readTodosFromLocalStorage() {
+	console.log('!!');
+	const todos = localStorage.getItem('todos');
+	return todos ? JSON.parse(todos) : [];
 }
